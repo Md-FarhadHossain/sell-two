@@ -6,8 +6,11 @@ import { Label } from "@radix-ui/react-label";
 import PaybKashBtn from "./PaybKashBtn";
 
 import axios from "axios";
+import { useContext } from "react";
+import { UserContext } from "@/app/context/AuthContext";
 
 const DownloadNowInput = () => {
+  const { signup, updateUser, googleSignin, signout } = useContext(UserContext);
   const {
     register,
     handleSubmit,
@@ -15,19 +18,53 @@ const DownloadNowInput = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    // Sign up with email and password
+    await signup(data.email, data.number)
+      .then((result) => {
+        console.log(result);
+        console.log("Signup Successfully!");
+        navigate(from, { replace: true });
+      })
+      .catch((err) => console.log(err));
+
     try {
       const { data } = await axios.post(
         "http://localhost:5000/api/bkash/payment/create",
         { amount: 1, orderId: 1 },
         { withCredentials: true }
       );
+
       window.location.href = data.bkashURL;
       console.log(data);
     } catch (error) {
       console.log(error.response.data);
     }
-    console.log(data);
+    console.log(data, data.email);
   };
+  // const onSubmit = async (data) => {
+  //   try {
+  //     const { data } = await axios.post(
+  //       "http://localhost:5000/api/bkash/payment/create",
+  //       { amount: 1, orderId: 1 },
+  //       { withCredentials: true }
+  //     );
+
+  //     // Sign up with email and password
+  //     await signup(data.email, "4354dfpassword")
+  //       .then((result) => {
+  //         console.log(result);
+  //         console.log("Signup Successfully!");
+  //         navigate(from, { replace: true });
+  //       })
+  //       .catch((err) => console.log(err));
+
+  //     window.location.href = data.bkashURL;
+  //     console.log(data);
+  //   } catch (error) {
+  //     console.log(error.response.data);
+  //   }
+  //   console.log(data, data.email);
+  // };
 
   return (
     <div>

@@ -1,9 +1,13 @@
 import { Inter, Hind_Siliguri } from "next/font/google";
 
 import "./globals.css";
+import UserContextProvider from "./context/AuthContext";
 
 const inter = Inter({ subsets: ["latin"] });
-const hindShiloguri = Hind_Siliguri({ subsets: ['latin'], weight: ['300', '400','500', '600','700'] }); 
+const hindShiloguri = Hind_Siliguri({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
 
 export const metadata = {
   title: "24 hours of a muslim ",
@@ -13,7 +17,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={hindShiloguri.className}>{children}</body>
+      <body className={hindShiloguri.className}>
+        <UserContextProvider>{children}</UserContextProvider>
+      </body>
     </html>
   );
 }
