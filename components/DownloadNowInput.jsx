@@ -88,7 +88,7 @@ const DownloadNowInput = () => {
                 required: true,
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "ইনভ্যালিড ই-মেইল এড্রেস",
+                  message: "ভুল ই-মেইল এড্রেস",
                 },
               })}
             />

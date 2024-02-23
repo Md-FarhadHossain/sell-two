@@ -12,7 +12,7 @@ const HowToOrder = () => {
           <div className="flex justify-center mt-10">
           {/* <iframe className="rounded-2xl" width="1120" height="630" src="https://www.youtube.com/embed/IZsQqarWXtY?si=_ovMh_gwGZWXNpg0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> */}
 
-          <iframe className="rounded-2xl" src="https://www.youtube.com/embed/IZsQqarWXtY?rel=0&color=white" width="1120" height="630" title="I Built a $1M AI App [No Code]" frameborder="0" allowfullscreen></iframe>
+          <iframe className="rounded-2xl" src="https://www.youtube.com/embed/IZsQqarWXtY?rel=0&color=white" width="1120" height="630" title="I Built a $1M AI App [No Code]"  allowFullScreen></iframe>
           </div>
 
           <div className="text-center mt-10">
