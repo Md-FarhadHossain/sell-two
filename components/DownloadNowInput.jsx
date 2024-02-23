@@ -41,30 +41,8 @@ const DownloadNowInput = () => {
     }
     console.log(data, data.email);
   };
-  // const onSubmit = async (data) => {
-  //   try {
-  //     const { data } = await axios.post(
-  //       "http://localhost:5000/api/bkash/payment/create",
-  //       { amount: 1, orderId: 1 },
-  //       { withCredentials: true }
-  //     );
-
-  //     // Sign up with email and password
-  //     await signup(data.email, "4354dfpassword")
-  //       .then((result) => {
-  //         console.log(result);
-  //         console.log("Signup Successfully!");
-  //         navigate(from, { replace: true });
-  //       })
-  //       .catch((err) => console.log(err));
-
-  //     window.location.href = data.bkashURL;
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.log(error.response.data);
-  //   }
-  //   console.log(data, data.email);
-  // };
+ 
+ 
 
   return (
     <div>
@@ -79,8 +57,19 @@ const DownloadNowInput = () => {
               className="h-14 text-base px-4"
               id="name"
               placeholder="Name"
-              {...register("name", { required: true })}
+              {...register("name", {
+                required: true,
+                minLength: {
+                  value: 3,
+                  message: "নাম কমপক্ষে ৩ অক্ষরের হতে হবে",
+                },
+              })}
             />
+            <div className="pt-1">
+              {errors.name && (
+                <p className="text-red-500">{errors.name.message}</p>
+              )}
+            </div>
           </div>
 
           <div>
@@ -92,10 +81,22 @@ const DownloadNowInput = () => {
             </Label>
             <Input
               id="email"
+              // type="email"
               className="h-14 text-base px-4"
               placeholder="Email"
-              {...register("email", { required: true })}
+              {...register("email", {
+                required: true,
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "ইনভ্যালিড ই-মেইল এড্রেস",
+                },
+              })}
             />
+            <div className="pt-1">
+              {errors.email && (
+                <p className="text-red-500">{errors.email.message}</p>
+              )}
+            </div>
           </div>
 
           <div>
@@ -110,9 +111,19 @@ const DownloadNowInput = () => {
               className="h-14 text-base px-4"
               placeholder="Number"
               type="number"
-              minlength="11"
-              {...register("number", { required: true })}
+              {...register("number", {
+                required: true,
+                minLength: {
+                  value: 11,
+                  message: <span>নম্বর কমপক্ষে <span className="font-bold">১১</span> টি অক্ষর থাকতে হবে</span>,
+                },
+              })}
             />
+            <div className="pt-1">
+              {errors.number && (
+                <p className="text-red-500">{errors.number.message}</p>
+              )}
+            </div>
           </div>
           <PaybKashBtn />
         </form>
