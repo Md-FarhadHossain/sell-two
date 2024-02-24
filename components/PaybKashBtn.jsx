@@ -1,15 +1,10 @@
 "use client";
-import axios from "axios";
 import { Button } from "./ui/button";
 import Image from "next/image";
 
 
 import bKashLogo2 from "@/public/BKash-Icon2-Logo.wine.svg";
 
-
-const pay = async () => {
-    
-  };
 
 
 const PaybKashBtn = () => {

@@ -10,15 +10,21 @@ import { useContext } from "react";
 import { UserContext } from "@/app/context/AuthContext";
 
 const DownloadNowInput = () => {
-  const { signup, updateUser, googleSignin, signout } = useContext(UserContext);
+  const { signup } = useContext(UserContext);
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm();
 
+  // On submit
+
   const onSubmit = async (data) => {
     // Sign up with email and password
+const userEmail = {
+  email: data.email
+}
+
     await signup(data.email, data.number)
       .then((result) => {
         console.log(result);
@@ -39,6 +45,27 @@ const DownloadNowInput = () => {
     } catch (error) {
       console.log(error.response.data);
     }
+
+    
+
+
+    try {
+      const response = await fetch('http://localhost:5000/api/bkash/payment/callback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(userEmail)
+      });
+
+      if (response.ok) {
+          const { paymentID, redirectUrl } = await response.json();
+          // window.location.href = redirectUrl; // Redirect to Bkash
+      } else {
+          // Handle error from backend
+      }
+  } catch (error) {
+      console.error('Error initiating payment:', error);
+  }
+
     console.log(data, data.email);
   };
  
@@ -55,14 +82,11 @@ const DownloadNowInput = () => {
             </Label>
             <Input
               className="h-14 text-base px-4"
+              type="text"
               id="name"
               placeholder="Name"
               {...register("name", {
-                required: true,
-                minLength: {
-                  value: 3,
-                  message: "নাম কমপক্ষে ৩ অক্ষরের হতে হবে",
-                },
+                required: true
               })}
             />
             <div className="pt-1">
@@ -85,12 +109,13 @@ const DownloadNowInput = () => {
               className="h-14 text-base px-4"
               placeholder="Email"
               {...register("email", {
-                required: true,
+                required: "Email Address is required",
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "ভুল ই-মেইল এড্রেস",
+                 
                 },
               })}
+              aria-invalid={errors.mail ? "true" : "false"}
             />
             <div className="pt-1">
               {errors.email && (
@@ -112,10 +137,10 @@ const DownloadNowInput = () => {
               placeholder="Number"
               type="number"
               {...register("number", {
-                required: true,
+                required:  <span>নম্বর কমপক্ষে <span className="font-bold">১১</span> টি অক্ষর থাকতে হবে</span>,
                 minLength: {
                   value: 11,
-                  message: <span>নম্বর কমপক্ষে <span className="font-bold">১১</span> টি অক্ষর থাকতে হবে</span>,
+                  
                 },
               })}
             />
