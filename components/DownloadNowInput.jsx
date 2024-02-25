@@ -21,9 +21,9 @@ const DownloadNowInput = () => {
 
   const onSubmit = async (data) => {
     // Sign up with email and password
-const userEmail = {
-  email: data.email
-}
+    const userEmail = {
+      email: data.email,
+    };
 
     await signup(data.email, data.number)
       .then((result) => {
@@ -46,30 +46,28 @@ const userEmail = {
       console.log(error.response.data);
     }
 
-    
-
-
     try {
-      const response = await fetch('http://localhost:5000/api/bkash/payment/callback', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(userEmail)
-      });
+      const response = await fetch(
+        "http://localhost:5000/api/bkash/payment/callback",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(userEmail),
+        }
+      );
 
       if (response.ok) {
-          const { paymentID, redirectUrl } = await response.json();
-          // window.location.href = redirectUrl; // Redirect to Bkash
+        const { paymentID, redirectUrl } = await response.json();
+        // window.location.href = redirectUrl; // Redirect to Bkash
       } else {
-          // Handle error from backend
+        // Handle error from backend
       }
-  } catch (error) {
-      console.error('Error initiating payment:', error);
-  }
+    } catch (error) {
+      console.error("Error initiating payment:", error);
+    }
 
     console.log(data, data.email);
   };
- 
- 
 
   return (
     <div>
@@ -86,7 +84,7 @@ const userEmail = {
               id="name"
               placeholder="Name"
               {...register("name", {
-                required: true
+                required: true,
               })}
             />
             <div className="pt-1">
@@ -112,7 +110,6 @@ const userEmail = {
                 required: "Email Address is required",
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                 
                 },
               })}
               aria-invalid={errors.mail ? "true" : "false"}
@@ -137,10 +134,14 @@ const userEmail = {
               placeholder="Number"
               type="number"
               {...register("number", {
-                required:  <span>নম্বর কমপক্ষে <span className="font-bold">১১</span> টি অক্ষর থাকতে হবে</span>,
+                required: (
+                  <span>
+                    নম্বর কমপক্ষে <span className="font-bold">১১</span> টি অক্ষর
+                    থাকতে হবে
+                  </span>
+                ),
                 minLength: {
                   value: 11,
-                  
                 },
               })}
             />
