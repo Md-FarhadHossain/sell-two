@@ -2,7 +2,7 @@
 const nextConfig = {
     image: {
         domains: ["https://swiperjs.com"],
-      },
+      }
 };
 
 export default nextConfig;

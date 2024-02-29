@@ -10,14 +10,14 @@ import { useContext } from "react";
 import { UserContext } from "@/app/context/AuthContext";
 
 const DownloadNowInput = () => {
-  const { signup } = useContext(UserContext);
+  // const { signup } = useContext(UserContext);
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm();
 
-  // On submit
+  // On submit function
 
   const onSubmit = async (data) => {
     // Sign up with email and password
@@ -25,13 +25,21 @@ const DownloadNowInput = () => {
       email: data.email,
     };
 
-    await signup(data.email, data.number)
-      .then((result) => {
-        console.log(result);
-        console.log("Signup Successfully!");
-        navigate(from, { replace: true });
-      })
-      .catch((err) => console.log(err));
+   
+   localStorage.setItem('email', data.email);
+   localStorage.setItem('number', data.number);
+
+
+
+
+
+    // await signup(data.email, data.number)
+    //   .then((result) => {
+    //     console.log(result);
+    //     console.log("Signup Successfully!");
+    //     navigate(from, { replace: true });
+    //   })
+    //   .catch((err) => console.log(err));
 
     try {
       const { data } = await axios.post(
