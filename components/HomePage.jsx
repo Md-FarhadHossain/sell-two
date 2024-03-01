@@ -9,6 +9,7 @@ import DownloadNowHome from './DownloadNowHome'
 import Footer from './Footer'
 
 const HomePage = () => {
+  
   return (
     <>
         <Navbar />
