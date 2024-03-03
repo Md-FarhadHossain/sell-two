@@ -67,8 +67,8 @@ const SuccessPage = () => {
   // }, []);
 
   return (
-    <div className="h-[100dvh] flex items-center justify-center">
-      <div className="border shadow-lg p-12 rounded-lg">
+    <div className="h-[100dvh] bg-blue-200 flex items-center justify-center px-4">
+      <div className="border shadow-lg p-12 rounded-lg bg-white">
         <div>
           <div className="flex items-center justify-center">
           <div className="text-white bg-gradient-to-r from-[#188fff] bg-[#18C0FF] w-24 h-24 rounded-full flex items-center justify-center text-8xl">
