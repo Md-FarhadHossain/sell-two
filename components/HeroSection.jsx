@@ -36,7 +36,6 @@ const HeroSection = () => {
               Download Now
             </button>
           </Link>
-          <a href="/download-now">click me</a>
         </div>
       </div>
     </section>

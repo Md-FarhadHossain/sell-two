@@ -19,6 +19,9 @@ const SuccessPage = () => {
   const userEmail = localStorage.getItem("email");
   const userNumber = localStorage.getItem("number");
 
+
+  
+
   // console.log(pathname.includes("success"))
 
   if (userEmail) {
