@@ -75,7 +75,7 @@ const Dashboard = () => {
                     <TableCell>{data.label}</TableCell>
                     <TableCell className="font-semibold">{data.mb}</TableCell>
                     <TableCell className="text-right">
-                      <a href="../../public/hellopdf.pdf" download ><Button>Download now</Button></a>
+                      <a href="../../public/hellopdf" download ><Button>Download now</Button></a>
                     </TableCell>
                   </TableRow>
                 ))}
