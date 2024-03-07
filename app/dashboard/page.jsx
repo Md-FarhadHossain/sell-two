@@ -11,6 +11,7 @@ import {
 
 import Link from "next/link";
 import Image from "next/image";
+import Navbar from "@/components/Navbar";
 
 const bookData = [
   {
@@ -43,8 +44,10 @@ const linkData = [
 const Dashboard = () => {
   return (
     <>
+    <Navbar />
       <section className="flex ">
-        <div className="border-r bg-gray-100 h-screen w-1/5">
+
+        {/* <div className="border-r bg-gray-100 h-screen w-1/5">
           {linkData.map((data) => (
             <div key={data.id} className="bg-green-200 ">
               <Link
@@ -55,16 +58,16 @@ const Dashboard = () => {
               </Link>
             </div>
           ))}
-        </div>
+        </div> */}
 
         <div className="container mx-auto">
-          <div className="flex gap-4 mt-8">
+          <div className="grid lg:gird-col-2 md:grid-cols-2 grid-cols-1 gap-4 lg:mt-48 md:mt-48 mt-28 lg:w-[75%] w-full">
             {bookData.map((data) => (
               <div key={data.id}>
                 <Card>
                   <CardHeader>
                     <Image
-                      className="w-[100%] h-[15rem] object-cover rounded-lg"
+                      className="w-[100%] h-[18rem] object-cover rounded-lg"
                       src={img}
                       alt="img"
                     />

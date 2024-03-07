@@ -7,6 +7,7 @@ import HowToOrder from './HowToOrder'
 import CustomarsReview from './CustomarsReview'
 import DownloadNowHome from './DownloadNowHome'
 import Footer from './Footer'
+import BottomByeSection from './BottomByeSection'
 
 const HomePage = () => {
   
@@ -20,6 +21,7 @@ const HomePage = () => {
         <CustomarsReview />
         <DownloadNowHome />
         <Footer />
+        <BottomByeSection />
     </>
   )
 }
