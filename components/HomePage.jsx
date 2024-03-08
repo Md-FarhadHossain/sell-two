@@ -13,6 +13,7 @@ const HomePage = () => {
   
   return (
     <>
+     <BottomByeSection />
         <Navbar />
         <HeroSection />
         <WhySection />
@@ -21,7 +22,6 @@ const HomePage = () => {
         <CustomarsReview />
         <DownloadNowHome />
         <Footer />
-        <BottomByeSection />
     </>
   )
 }
