@@ -8,7 +8,7 @@ const BottomByeSection = () => {
   return (
     <section className="fixed border-t z-50 bottom-0 bg-white w-full shadow-[rgba(0,0,15,0.12)_0px_0px_20px_4px]">
       <div className="flex items-center justify-between py-4 container mx-auto">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 lg:block md:block hidden">
           <div><Image className="w-[50px] object-contain" src={bookCover2} alt="bookCover" /></div>
           <div className="text-xl font-semibold">একজন মুসলমানের জীবনে ২৪ ঘণ্টা</div>
         </div>
