@@ -1,15 +1,34 @@
-import { Button } from "./ui/button"
+import { Button } from "./ui/button";
+import rocket from "../public/rocket.webp";
+import bookCover from "../public/book-cover.png";
+import bookCover2 from "../public/boo-cover-2.png";
+import Image from "next/image";
 
 const BottomByeSection = () => {
   return (
-    <section className="fixed border-t z-50 bottom-0 bg-white w-full">
-        <div className="flex items-center justify-between py-4 container mx-auto">
-            <div>
-                <div>Bundle: Everything Explained</div>
-            </div>
-            <div><Button>120 </Button></div>
+    <section className="fixed border-t z-50 bottom-0 bg-white w-full shadow-[rgba(0,0,15,0.12)_0px_0px_20px_4px]">
+      <div className="flex items-center justify-between py-4 container mx-auto">
+        <div className="flex items-center gap-3">
+          <div><Image className="w-[50px] object-contain" src={bookCover2} alt="bookCover" /></div>
+          <div className="text-xl font-semibold">একজন মুসলমানের জীবনে ২৪ ঘণ্টা</div>
         </div>
+        <div className="flex items-center">
+          <div className="flex gap-2">
+            <div className="text-4xl font-bold text-[#de1d59]">৳১৬০</div>
+            <div className="line-through text-3xl font-semibold text-[#a8a8a8] mr-3">
+              ৳৩২০
+            </div>
+          </div>
+          <button className="bg-yellow-300 text-black text-[17px] border border-yellow-500 font-semibold flex px-16 py-3 rounded-lg text-xl items-center">
+            <span>
+              {" "}
+              এখনই কিনুন <span className="font-bold">৳১৬০</span>
+            </span>
+            <Image className="w-[22px] ml-2" src={rocket} alt="rocket" />
+          </button>
+        </div>
+      </div>
     </section>
-  )
-}
-export default BottomByeSection
+  );
+};
+export default BottomByeSection;
