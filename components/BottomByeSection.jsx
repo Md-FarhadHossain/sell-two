@@ -7,7 +7,7 @@ const BottomByeSection = () => {
             <div>
                 <div>Bundle: Everything Explained</div>
             </div>
-            <div>120 <Button></Button></div>
+            <div><Button>120 </Button></div>
         </div>
     </section>
   )
