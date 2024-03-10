@@ -56,7 +56,7 @@ const DownloadNowInput = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/bkash/payment/callback",
+        "http://localhost:5000/api/bkash/payment/create",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
