@@ -21,17 +21,10 @@ const DownloadNowInput = () => {
 
   const onSubmit = async (data) => {
     // Sign up with email and password
-    const userEmail = {
-      email: data.email,
-    };
+    const userEmail = data.email
 
-   
-   localStorage.setItem('email', data.email);
-   localStorage.setItem('number', data.number);
-
-
-
-
+    localStorage.setItem("email", data.email);
+    localStorage.setItem("number", data.number);
 
     // await signup(data.email, data.number)
     //   .then((result) => {
@@ -44,8 +37,9 @@ const DownloadNowInput = () => {
     try {
       const { data } = await axios.post(
         "http://localhost:5000/api/bkash/payment/create",
-        { amount: 1, orderId: 1 },
-        { withCredentials: true }
+        { amount: 1, orderId: 1, email: userEmail  },
+        { withCredentials: true },
+        { email: userEmail }
       );
 
       window.location.href = data.bkashURL;
@@ -54,27 +48,27 @@ const DownloadNowInput = () => {
       console.log(error.response.data);
     }
 
-    try {
-      const response = await fetch(
-        "http://localhost:5000/api/bkash/payment/create",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(userEmail),
-        }
-      );
+    // try {
+    //   const response = await fetch(
+    //     "http://localhost:5000/api/bkash/payment/create",
+    //     {
+    //       method: "POST",
+    //       headers: { "Content-Type": "application/json" },
+    //       body: JSON.stringify(userEmail),
+    //     }
+    //   );
 
-      if (response.ok) {
-        const { paymentID, redirectUrl } = await response.json();
-        // window.location.href = redirectUrl; // Redirect to Bkash
-      } else {
-        // Handle error from backend
-      }
-    } catch (error) {
-      console.error("Error initiating payment:", error);
-    }
+    //   if (response.ok) {
+    //     const { paymentID, redirectUrl } = await response.json();
+    //     // window.location.href = redirectUrl; // Redirect to Bkash
+    //   } else {
+    //     // Handle error from backend
+    //   }
+    // } catch (error) {
+    //   console.error("Error initiating payment:", error);
+    // }
 
-    console.log(data, data.email);
+    // console.log(data, data.email);
   };
 
   return (
