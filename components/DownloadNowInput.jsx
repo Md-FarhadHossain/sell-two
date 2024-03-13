@@ -68,7 +68,6 @@ const DownloadNowInput = () => {
     //   console.error("Error initiating payment:", error);
     // }
 
-    // console.log(data, data.email);
   };
 
   return (
