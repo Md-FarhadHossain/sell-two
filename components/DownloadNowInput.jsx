@@ -21,7 +21,7 @@ const DownloadNowInput = () => {
 
   const onSubmit = async (data) => {
     // Sign up with email and password
-    const userEmail = data.email
+    const userEmail = data.email;
 
     localStorage.setItem("email", data.email);
     localStorage.setItem("number", data.number);
@@ -37,7 +37,7 @@ const DownloadNowInput = () => {
     try {
       const { data } = await axios.post(
         "http://localhost:5000/api/bkash/payment/create",
-        { amount: 1, orderId: 1, email: userEmail  },
+        { amount: 1, orderId: 1, email: userEmail },
         { withCredentials: true },
         { email: userEmail }
       );
@@ -67,7 +67,6 @@ const DownloadNowInput = () => {
     // } catch (error) {
     //   console.error("Error initiating payment:", error);
     // }
-
   };
 
   return (
