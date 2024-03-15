@@ -29,11 +29,9 @@ const BottomByeSection = () => {
             </div>
           </div>
           <div className="w-full">
-            {" "}
             <Link href="download-now">
               <button className="bg-yellow-300 hover:bg-gray-950 hover:text-white hover:border-blue-950 transition-all w-full justify-center text-black text-[17px] border border-yellow-500 font-semibold flex px-16 py-3 rounded-xl text-xl items-center">
                 <span>
-                  {" "}
                   এখনই কিনুন <span className="font-bold">৳১৬০</span>
                 </span>
                 <Image className="w-[22px] ml-2" src={rocket} alt="rocket" />
